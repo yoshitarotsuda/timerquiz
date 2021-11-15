@@ -18,7 +18,7 @@ image or gif
 
 ## Licence
 
-#　DB設計
+# DB設計
 
 ## usersテーブル
 
