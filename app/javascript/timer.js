@@ -1,29 +1,66 @@
 window.addEventListener('load',() => {
-  const timerStart = document.getElementById("timer-start");
-  timerStart.addEventListener('click',timer);
-});
 
-function timer(){
-  let time = Number(document.getElementById("set-sec").value) + Number(document.getElementById("set-min").value) * 60 + Number(document.getElementById("set-hour").value) * 3600; // 受け取った値を数値に変換する
-  count();
 
-  function count(){
-    console.log(time);
-    time --;
-    let sec = Math.floor(time % 60); // Math.floor 与えられた値を上回らない最小の整数を返す
-    let min = Math.floor((time / 60) % 60);
-    let hour = Math.floor(time / 60 / 60);
-    document.getElementById("hour").textContent = String(hour).padStart(2,"0");
-    document.getElementById("min").textContent = String(min).padStart(2,"0");
-    document.getElementById("sec").textContent = String(sec).padStart(2,"0");
+  // ボタン要素を取得
+  const timerButton =document.getElementById("timer-button");
+  // 開始ボタンの取得
+  const button_element = timerButton.querySelector("a");
+  button_element.addEventListener('click',clickButton);
   
-    const timeoutId = setTimeout(count,1000);
-    if(time <= 0){
-      clearTimeout(timeoutId);
+  let nowTime = 0;
+  // ボタンをクリック
+  function clickButton(){
+    if (button_element.id == "timer-start") {
+      setTimer();
+      button_element.id = "timer-stop";
+      button_element.textContent = "停止";
+    }else if(button_element.id == "timer-stop"){
+      button_element.id = "timer-restart";
+      button_element.textContent = "再開";
+    }else{
+      button_element.id = "timer-stop";
+      button_element.textContent = "停止";
+      setNowTimer();
     }
   }
-}
+  
 
 
+  function setTimer(){
+    const time  = Number(document.getElementById("set-sec").value) + Number(document.getElementById("set-min").value) * 60 + Number(document.getElementById("set-hour").value) * 3600; // 受け取った値を数値に変換する
+    timer(time);
+  }
 
+  function setNowTimer(){
+    const time  = nowTime;
+    timer(time);
+  }
 
+  // タイマー起動、timeに渡した数値で動く
+  function timer(time){
+    count();
+
+    function count(){
+      console.log(time);
+      
+      let sec = Math.floor(time % 60); // Math.floor 与えられた値を上回らない最小の整数を返す
+      let min = Math.floor((time / 60) % 60);
+      let hour = Math.floor(time / 60 / 60);
+      document.getElementById("hour").textContent = String(hour).padStart(2,"0");
+      document.getElementById("min").textContent = String(min).padStart(2,"0");
+      document.getElementById("sec").textContent = String(sec).padStart(2,"0");
+    
+      const timeoutId = setTimeout(count,1000);
+      if(time <= 0){
+        clearTimeout(timeoutId);
+        button_element.id = "timer-start";
+        button_element.textContent = "開始";
+      }else if(document.getElementById("timer-restart")){
+        nowTime = time;
+        clearTimeout(timeoutId);
+      }
+      time --;
+    }
+  }
+
+});
