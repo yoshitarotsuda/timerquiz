@@ -18,7 +18,6 @@ function timer(){
     document.getElementById("sec").textContent = String(sec).padStart(2,"0");
   
     const timeoutId = setTimeout(count,1000);
-    console.log();
     if(time <= 0){
       clearTimeout(timeoutId);
     }
