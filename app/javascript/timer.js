@@ -1,6 +1,6 @@
 window.addEventListener('load',() => {
 
-  const timer_bell = new Audio('timer.mp3');
+  const timer_bell = new Audio("/assets/timer.mp3");
   console.log(timer_bell);
   // 開始停止再開ボタン要素を取得
   const timerButton =document.getElementById("timer-button");
