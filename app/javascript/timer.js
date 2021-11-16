@@ -3,6 +3,7 @@ window.addEventListener('load',() => {
   // 音声ファイルの読み込み
   const timer_bell = new Audio("/assets/timer.mp3");
   console.log(timer_bell);
+  
   // 開始停止再開ボタン要素を取得
   const timerButton =document.getElementById("timer-button");
   // ボタンの取得
