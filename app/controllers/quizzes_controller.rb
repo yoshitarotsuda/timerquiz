@@ -2,6 +2,7 @@ class QuizzesController < ApplicationController
   before_action :authenticate_user!, except: [:index,:show] # deviceメソッド、ログアウトユーザーの移動先限定
 
   def index
+    @quizzes = Quiz.all.order("created_at DESC")
   end
 
   def new

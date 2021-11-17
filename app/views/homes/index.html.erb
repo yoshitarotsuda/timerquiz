@@ -1,1 +1,35 @@
-とっぷぺーじ
+<div>
+  <ul>
+    <% if user_signed_in? %>
+      <li><%= link_to current_user.nickname, "#", class: "user-nickname" %></li>
+      <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "logout" %></li>
+    <% else %>
+      <li><%= link_to 'ログイン', new_user_session_path, class: "login" %></li>
+      <li><%= link_to '新規登録', new_user_registration_path, class: "sign-up" %></li>
+    <% end %>
+  </ul>
+</div>
+<h1>タイマー</h1>
+<form>
+  <p>
+    <input type ="number" id="set-hour" value="0" max="24"min="0">時間
+    <input type ="number" id="set-min" value="0" max="59" min="0">分
+    <input type ="number" id="set-sec" value="0" max="59" min="0">秒
+  </p>
+  <p id = "timer-button"><a href ="#" id ="timer-start" >開始</a></p>
+  
+  <p id = "reset-button"><a id ="timer-reset" >リセット</a></p>
+</form>
+<h1 id="timer-body"><span id="hour">00</span>：<span id="min">00</span>：<span id="sec">00</span><h1>
+
+<h1>クイズ</h1>
+
+<%= link_to 'クイズ作成', new_quiz_path %>
+<%= link_to 'クイズ一覧', quizzes_path %>
+<h2>問題名</h2>
+<p>ジャンル</p>
+<p>難易度</p>
+<p>問題文</p>
+<p>解答</p>
+<p>例文</p>
+<%= link_to 'クイズ詳細', "#" %>
