@@ -1,3 +1,4 @@
+<%= link_to 'トップページへ戻る',root_path %>
 <h2>クイズ作成</h2>
 
 <%= form_with model: @quiz, url:quizzes_path ,local: true do |f| %>
@@ -15,5 +16,3 @@
   <%= f.text_area :quiz_sample, placeholder:"例文、使用例（入力は任意です)"%>
   <%= f.submit "出題する"%>
 <% end %>
-
-<%= link_to 'トップページへ戻る',root_path %>
