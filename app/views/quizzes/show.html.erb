@@ -17,6 +17,6 @@
   <%= link_to '編集',edit_quiz_path(@quiz.id)%>
   <details>
     <summary>削除</summary>
-      <p>本当に削除しますか？<%= link_to "YES","" %></p>
+      <p>本当に削除しますか？<%= link_to "YES",quiz_path(@quiz.id), method: :delete %></p>
   </details>
 <% end %>

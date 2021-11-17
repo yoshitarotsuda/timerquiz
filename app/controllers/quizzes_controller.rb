@@ -43,6 +43,16 @@ class QuizzesController < ApplicationController
     end
   end
 
+  def destroy
+    @quiz = Quiz.find(params[:id])
+    if current_user.id == @quiz.user_id
+      @quiz.destroy
+      redirect_to root_path
+    else
+      render 'show'
+    end
+  end
+
   private
   def quiz_params # ストロングパラメーター設置
     params.require(:quiz).permit(:quiz_name, :quiz_category_id, :quiz_level_id, :quiz_text, :quiz_answer, :quiz_sample).merge(user_id: current_user.id)
