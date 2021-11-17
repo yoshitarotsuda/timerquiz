@@ -22,6 +22,10 @@ class QuizzesController < ApplicationController
     end
   end
 
+  def show
+    @quiz = Quiz.find(params[:id])
+  end
+
   private
   def quiz_params # ストロングパラメーター設置
     params.require(:quiz).permit(:quiz_name, :quiz_category_id, :quiz_level_id, :quiz_text, :quiz_answer, :quiz_sample).merge(user_id: current_user.id)
