@@ -1,0 +1,18 @@
+<%= link_to 'トップページへ戻る',root_path %>
+<h2>編集ページ</h2>
+
+<%= form_with model: @quiz, url:quiz_path(@quiz.id) ,local: true do |f| %>
+  <%= f.text_area :quiz_name, placeholder:"クイズ名（必須です 40文字まで)", maxlength:"40" %><br>
+  <p>ジャンル・難易度</p>
+  <%= f.collection_select(:quiz_category_id, QuizCategory.all, :id, :date, {}, {class:"hoge", id:"hoge"}) %>
+  <%= f.collection_select(:quiz_level_id, QuizLevel.all, :id, :date, {}, {class:"hoge", id:"hoge"}) %><br>
+  <p>難易度のイメージとして</p>
+  <p>IT関連の用語を使わずに説明できるものが「初心者」</p>
+  <p>「初心者」の用語のみで説明できるものが「初級者」</p>
+  <p>「初級者」の用語が理解できてなければ説明できないものが「中級者」</p>
+  <p>迷ったらこのような感覚で決定してもらえると良いかもしれません</p>
+  <%= f.text_area :quiz_text, placeholder:"問題文（入力必須です)"%><br>
+  <%= f.text_area :quiz_answer, placeholder:"解答（入力必須です)"%><br>
+  <%= f.text_area :quiz_sample, placeholder:"例文、使用例（入力は任意です)"%>
+  <%= f.submit "変更する"%>
+<% end %>

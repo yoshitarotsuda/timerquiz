@@ -1,31 +1,17 @@
+<%= link_to 'トップページへ戻る',root_path %>
+<h2>一覧ページ</h2>
 <div>
-  <ul>
-    <% if user_signed_in? %>
-      <li><%= link_to current_user.nickname, "#", class: "user-nickname" %></li>
-      <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "logout" %></li>
-    <% else %>
-      <li><%= link_to 'ログイン', new_user_session_path, class: "login" %></li>
-      <li><%= link_to '新規登録', new_user_registration_path, class: "sign-up" %></li>
+  <% if @quizzes.present? %>
+    <% @quizzes.each do |quiz| %>
+      <div>
+        <th>No.<%= quiz.id %></th>
+        <%= link_to quiz_path(quiz.id) do %>
+        <th>『<%= quiz.quiz_name %>』</th>
+        <% end %>
+        <th>出題者:<%= quiz.user.nickname %>さん</th>
+      </div>
     <% end %>
-  </ul>
+  <% else %>
+    <p>出題がありません</p>
+  <% end %>
 </div>
-<h1>タイマー</h1>
-<form>
-  <p>
-    <input type ="number" id="set-hour" value="0" max="24"min="0">時間
-    <input type ="number" id="set-min" value="0" max="59" min="0">分
-    <input type ="number" id="set-sec" value="0" max="59" min="0">秒
-  </p>
-  <p id = "timer-button"><a href ="#" id ="timer-start" >開始</a></p>
-  
-  <p id = "reset-button"><a id ="timer-reset" >リセット</a></p>
-</form>
-<h1 id="timer-body"><span id="hour">00</span>：<span id="min">00</span>：<span id="sec">00</span><h1>
-
-
-<h2>問題名</h2>
-<p>ジャンル</p>
-<p>難易度</p>
-<p>問題文</p>
-<p>解答</p>
-<p>例文</p>

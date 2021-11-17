@@ -1,0 +1,25 @@
+<%= link_to 'トップページへ戻る',root_path %>
+<h2>詳細ページ</h2>
+
+<%= @quiz.quiz_name %>
+<ul>
+  <li>投稿者:<%= @quiz.user.nickname %>さん</li>
+  <li>ジャンル:<%= @quiz.quiz_category.date %></li>
+  <li>難易度:<%= @quiz.quiz_level.date %></li>
+  <li>問題文<br><%= @quiz.quiz_text%></li>
+  <details>
+  <summary>答えはコチラをクリック</summary>
+  <li>解答<br><%= @quiz.quiz_answer%></li>
+  <% if @quiz.quiz_sample.present? %>
+    <li>解説・例文・使用例<br><%= @quiz.quiz_sample%></li>
+  <% end %>
+  </details>
+</ul>
+
+<% if current_user.id == @quiz.user_id%>
+  <%= link_to '編集',edit_quiz_path(@quiz.id)%>
+  <details>
+    <summary>削除はこちらをクリック</summary>
+      <p>本当に削除しますか？<%= link_to "YES",quiz_path(@quiz.id), method: :delete %></p>
+  </details>
+<% end %>
