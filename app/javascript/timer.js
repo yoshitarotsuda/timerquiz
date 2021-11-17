@@ -10,12 +10,15 @@ window.addEventListener('load',() => {
   const button_element = timerButton.querySelector("a");
   button_element.addEventListener('click',clickButton);
 
-  //リセットボタンの取得
+  // リセットボタンの取得
   const resetButton =document.getElementById("reset-button");
   const reset_element = resetButton.querySelector("a");
   reset_element.addEventListener('click',resetTimer);
   
-  //起動後のタイマー時間
+  // 解答ボタンの取得
+  const clickAnswer =document.getElementById("click-answer");
+
+  // 起動後のタイマー時間
   let nowTime = 0;
 
   // ボタンをクリック
@@ -78,6 +81,7 @@ window.addEventListener('load',() => {
         timer_bell.play();
         button_element.id = "timer-start";
         button_element.textContent = "開始";
+        clickAnswer.click();
       }else if(document.getElementById("timer-restart")){
         nowTime = time;
         clearTimeout(timeoutId);

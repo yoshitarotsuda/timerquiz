@@ -25,26 +25,26 @@
 <div>
   <%= link_to 'クイズ作成', new_quiz_path %>
   <%= link_to 'クイズ一覧', quizzes_path %>
+  <%# <span class="function">出題の30秒後に答えが30秒表示され、次の問題が表示されます</span> %>
 
-  <% if @quizzes.present? %>
-    <% @quizzes.each do |quiz| %>
-      <div>
-        <%# <th>No.<%= quiz.id %>
-        <%= link_to quiz_path(quiz.id) do %>
-        <p>『<%= quiz.quiz_name %>』</p>
-        <% end %>
-        
-        <h3><%= quiz.quiz_text %></h3>
-        <th>出題者:<%= quiz.user.nickname %>さん</th>
+  <% if @randomquiz.present? %>
+        <div>
+          <p>タイトル 
+          <%= link_to quiz_path(@randomquiz.id) do %>
+          <b>『<%= @randomquiz.quiz_name %>』</b>
+          <% end %>
+          <th>出題者: <%= @randomquiz.user.nickname %>さん ジャンル: <%= @randomquiz.quiz_category.date %> 難易度: <%= @randomquiz.quiz_level.date %>向け</th>
+          </p>
+          <h3><%= @randomquiz.quiz_text %></h3>
+                  </div>
+        <details>
+          <summary id="click-answer">答えはコチラをクリック</summary>
+            <li>解答<br><h3><%= @randomquiz.quiz_answer%><h3></li>
+          <% if @randomquiz.quiz_sample.present? %>
+            <li>解説・例文・使用例<br><%= @randomquiz.quiz_sample%></li>
+          <% end %>
+        </details>
       </div>
-      <details>
-        <summary>答えはコチラをクリック</summary>
-          <li>解答<br><h3><%= quiz.quiz_answer%><h3></li>
-        <% if quiz.quiz_sample.present? %>
-          <li>解説・例文・使用例<br><%= quiz.quiz_sample%></li>
-        <% end %>
-      </details>
-    <% end %>
   <% else %>
     <p>出題がありません</p>
   <% end %>
