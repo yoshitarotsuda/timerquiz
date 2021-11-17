@@ -1,5 +1,5 @@
 <div>
-  <ul>
+  <ul class="login-info">
     <% if user_signed_in? %>
       <li><%= link_to "#{current_user.nickname}さん", "#", class: "user-nickname" %></li>
       <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "logout" %></li>
@@ -9,30 +9,43 @@
     <% end %>
   </ul>
 </div>
-<h1>タイマー</h1>
+
 <form>
-  <p>
+  <b>
     <input type ="number" id="set-hour" value="0" max="24"min="0">時間
     <input type ="number" id="set-min" value="0" max="59" min="0">分
     <input type ="number" id="set-sec" value="0" max="59" min="0">秒
-  </p>
-  <p id = "timer-button"><a href ="#" id ="timer-start" >開始</a></p>
-  
-  <p id = "reset-button"><a id ="timer-reset" >リセット</a></p>
+  </b>
+  <b id = "timer-button"><a href ="#" id ="timer-start" >開始</a></b>
+  <b id = "reset-button"><a id ="timer-reset" >リセット</a></b>
 </form>
-<h1 id="timer-body"><span id="hour">00</span>：<span id="min">00</span>：<span id="sec">00</span><h1>
+<div class="timer-main">
+  <h1 id="timer-body"><span id="hour">00</span>：<span id="min">00</span>：<span id="sec">00</span><h1>
+</div>
+<div>
+  <%= link_to 'クイズ作成', new_quiz_path %>
+  <%= link_to 'クイズ一覧', quizzes_path %>
 
-<h1>クイズ</h1>
-
-<%= link_to 'クイズ作成', new_quiz_path %>
-<%= link_to 'クイズ一覧', quizzes_path %>
-<h2>問題名</h2>
-<p>ジャンル</p>
-<p>難易度</p>
-<p>問題文</p>
-<details>
-<summary>解答</summary>
-  <p>解答</p>
-  <p>例文</p>
-  <%= link_to 'クイズ詳細', "#" %>
-</details>
+  <% if @quizzes.present? %>
+    <% @quizzes.each do |quiz| %>
+      <div>
+        <%# <th>No.<%= quiz.id %>
+        <%= link_to quiz_path(quiz.id) do %>
+        <p>『<%= quiz.quiz_name %>』</p>
+        <% end %>
+        
+        <h3><%= quiz.quiz_text %></h3>
+        <th>出題者:<%= quiz.user.nickname %>さん</th>
+      </div>
+      <details>
+        <summary>答えはコチラをクリック</summary>
+          <li>解答<br><h3><%= quiz.quiz_answer%><h3></li>
+        <% if quiz.quiz_sample.present? %>
+          <li>解説・例文・使用例<br><%= quiz.quiz_sample%></li>
+        <% end %>
+      </details>
+    <% end %>
+  <% else %>
+    <p>出題がありません</p>
+  <% end %>
+</div>
