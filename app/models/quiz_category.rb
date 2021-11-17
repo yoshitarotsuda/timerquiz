@@ -1,4 +1,4 @@
-class DeliveryCharge < ActiveHash::Base
+class QuizCategory < ActiveHash::Base
   self.data = [
     { id: 0, date: '---' },
     { id: 1, date: 'IT全般' },
