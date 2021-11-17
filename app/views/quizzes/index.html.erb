@@ -1,3 +1,4 @@
+<%= link_to 'トップページへ戻る',root_path %>
 <h2>一覧ページ</h2>
 <div>
   <% if @quizzes.present? %>
@@ -13,7 +14,4 @@
   <% else %>
     <p>出題がありません</p>
   <% end %>
-</div>
-<div>
-  <%= link_to 'トップページへ戻る',root_path %>
 </div>
