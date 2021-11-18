@@ -14,9 +14,17 @@ window.addEventListener('load',() => {
   const resetButton =document.getElementById("reset-button");
   const reset_element = resetButton.querySelector("a");
   reset_element.addEventListener('click',resetTimer);
-  
+
   // 解答ボタンの取得
   const clickAnswer =document.getElementById("click-answer");
+  
+  // 3分ボタンの取得
+  const click3min =document.getElementById("3-min");
+  click3min.addEventListener('click',set3min);
+  
+  // 5分ボタンの取得
+  const click5min =document.getElementById("5-min");
+  click5min.addEventListener('click',set5min);
 
   // 起動後のタイマー時間
   let nowTime = 0;
@@ -54,6 +62,19 @@ window.addEventListener('load',() => {
     const time  = Number(document.getElementById("set-sec").value) + Number(document.getElementById("set-min").value) * 60 + Number(document.getElementById("set-hour").value) * 3600; // 受け取った値を数値に変換する
     timer(time);
   }
+
+  // 入力フォームの情報に5分をセット
+  function set3min(){
+    document.getElementById("set-min").value = 3;
+    // min.value = 5;
+  }
+
+  // 入力フォームの情報に5分をセット
+  function set5min(){
+    document.getElementById("set-min").value = 5;
+    // min.value = 5;
+  }
+  
 
   // タイマーの情報からタイマーを再起動
   function setNowTimer(){

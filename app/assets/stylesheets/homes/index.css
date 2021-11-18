@@ -1,3 +1,10 @@
+.home-main{
+  list-style-type: none;
+}
+
+a{
+  text-decoration: none;
+}
 .login-info{
   display: flex;
   list-style-type: none;
@@ -9,7 +16,7 @@
 }
 
 .timer-main{
-  font-size:50px;
+  font-size:40px;
   color:aquamarine;
 }
 

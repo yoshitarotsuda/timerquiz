@@ -1,51 +1,56 @@
-<div>
-  <ul class="login-info">
-    <% if user_signed_in? %>
-      <li><%= link_to "#{current_user.nickname}さん", "#", class: "user-nickname" %></li>
-      <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "logout" %></li>
+<div class="home-main">
+  <div>
+    <ul class="login-info">
+      <% if user_signed_in? %>
+        <li><%= link_to "#{current_user.nickname}さん", "#", class: "user-nickname" %></li>
+        <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "logout" %></li>
+      <% else %>
+        <li><%= link_to 'ログイン', new_user_session_path, class: "login" %></li>
+        <li><%= link_to '新規登録', new_user_registration_path, class: "sign-up" %></li>
+      <% end %>
+    </ul>
+  </div>
+
+  <form>
+    <b>
+      <input type ="number" id="set-hour" value="0" max="24"min="0">時間
+      <input type ="number" id="set-min" value="0" max="59" min="0">分
+      <input type ="number" id="set-sec" value="0" max="59" min="0">秒
+    </b>
+    <b id = "timer-button"><a href ="#" id ="timer-start" >開始</a></b>
+    <b id = "3min-button"><a href ="#" id ="3-min" >3分</a></b>
+    <b id = "5min-button"><a href ="#" id ="5-min" >5分</a></b>
+    <b id = "reset-button"><a id ="timer-reset" >リセット</a></b>
+  </form>
+  <div class="timer-main">
+    <h1 id="timer-body"><span id="hour">00</span>：<span id="min">00</span>：<span id="sec">00</span><h1>
+  </div>
+  <div>
+    <%= link_to 'クイズ作成', new_quiz_path %>
+    <%= link_to 'クイズ一覧', quizzes_path %>
+    <a  href="#" id ="quiz-reset" >クイズ更新</a>
+    <%# <span class="function">出題の30秒後に答えが30秒表示され、次の問題が表示されます</span> %>
+
+    <% if @randomquiz.present? %>
+          <div>
+            <p>タイトル 
+            <%= link_to quiz_path(@randomquiz.id) do %>
+            <b>『<%= @randomquiz.quiz_name %>』</b>
+            <% end %>
+            <th>出題者: <b><%= @randomquiz.user.nickname %>さん</b> ジャンル: <b><%= @randomquiz.quiz_category.date %></b> 難易度: <b><%= @randomquiz.quiz_level.date %></b></th>
+            </p>
+            <h3><%= @randomquiz.quiz_text %></h3>
+                    </div>
+          <details>
+            <summary id="click-answer">答えはコチラをクリック</summary>
+              <li>解答<br><h3><%= @randomquiz.quiz_answer%><h3></li>
+            <% if @randomquiz.quiz_sample.present? %>
+              <li>解説・例文・使用例<br><h4><%= @randomquiz.quiz_sample%></h4></li>
+            <% end %>
+          </details>
+        </div>
     <% else %>
-      <li><%= link_to 'ログイン', new_user_session_path, class: "login" %></li>
-      <li><%= link_to '新規登録', new_user_registration_path, class: "sign-up" %></li>
+      <p>出題がありません</p>
     <% end %>
-  </ul>
-</div>
-
-<form>
-  <b>
-    <input type ="number" id="set-hour" value="0" max="24"min="0">時間
-    <input type ="number" id="set-min" value="0" max="59" min="0">分
-    <input type ="number" id="set-sec" value="0" max="59" min="0">秒
-  </b>
-  <b id = "timer-button"><a href ="#" id ="timer-start" >開始</a></b>
-  <b id = "reset-button"><a id ="timer-reset" >リセット</a></b>
-</form>
-<div class="timer-main">
-  <h1 id="timer-body"><span id="hour">00</span>：<span id="min">00</span>：<span id="sec">00</span><h1>
-</div>
-<div>
-  <%= link_to 'クイズ作成', new_quiz_path %>
-  <%= link_to 'クイズ一覧', quizzes_path %>
-  <%# <span class="function">出題の30秒後に答えが30秒表示され、次の問題が表示されます</span> %>
-
-  <% if @randomquiz.present? %>
-        <div>
-          <p>タイトル 
-          <%= link_to quiz_path(@randomquiz.id) do %>
-          <b>『<%= @randomquiz.quiz_name %>』</b>
-          <% end %>
-          <th>出題者: <%= @randomquiz.user.nickname %>さん ジャンル: <%= @randomquiz.quiz_category.date %> 難易度: <%= @randomquiz.quiz_level.date %>向け</th>
-          </p>
-          <h3><%= @randomquiz.quiz_text %></h3>
-                  </div>
-        <details>
-          <summary id="click-answer">答えはコチラをクリック</summary>
-            <li>解答<br><h3><%= @randomquiz.quiz_answer%><h3></li>
-          <% if @randomquiz.quiz_sample.present? %>
-            <li>解説・例文・使用例<br><%= @randomquiz.quiz_sample%></li>
-          <% end %>
-        </details>
-      </div>
-  <% else %>
-    <p>出題がありません</p>
-  <% end %>
+  </div>
 </div>
