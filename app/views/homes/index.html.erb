@@ -1,6 +1,7 @@
-<div class="home-main">
+
   <div>
-    <ul class="login-info">
+    <ul  class="header-list">
+        <li><%= link_to 'ガイド'%></li>
       <% if user_signed_in? %>
         <li><%= link_to "#{current_user.nickname}さん", "#", class: "user-nickname" %></li>
         <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "logout" %></li>
@@ -8,9 +9,12 @@
         <li><%= link_to 'ログイン', new_user_session_path, class: "login" %></li>
         <li><%= link_to '新規登録', new_user_registration_path, class: "sign-up" %></li>
       <% end %>
+      
     </ul>
   </div>
 
+<div class="home-main">
+ 
   <form>
     <b>
       <input type ="number" id="set-hour" value="0" max="24"min="0">時間

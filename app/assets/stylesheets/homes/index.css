@@ -5,12 +5,12 @@
 a{
   text-decoration: none;
 }
-.login-info{
+.header-list{
   display: flex;
-  list-style-type: none;
 }
 
-.login-info li{
+.header-list li{
+  list-style-type: none;
   font-size:10px;
   margin-right:20px;
 }

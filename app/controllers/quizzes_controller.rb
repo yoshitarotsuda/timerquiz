@@ -51,6 +51,10 @@ class QuizzesController < ApplicationController
     else
       render 'show'
     end
+  end 
+
+  def seeds
+    @quizzes = Quiz.all.order("created_at DESC")
   end
 
   private
