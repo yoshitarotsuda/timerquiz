@@ -17,6 +17,8 @@
     <input type ="number" id="set-sec" value="0" max="59" min="0">秒
   </b>
   <b id = "timer-button"><a href ="#" id ="timer-start" >開始</a></b>
+  <b id = "3min-button"><a href ="#" id ="3-min" >3分</a></b>
+  <b id = "5min-button"><a href ="#" id ="5-min" >5分</a></b>
   <b id = "reset-button"><a id ="timer-reset" >リセット</a></b>
 </form>
 <div class="timer-main">
@@ -34,7 +36,7 @@
           <%= link_to quiz_path(@randomquiz.id) do %>
           <b>『<%= @randomquiz.quiz_name %>』</b>
           <% end %>
-          <th>出題者: <b><%= @randomquiz.user.nickname %>さん</b> ジャンル: <b><%= @randomquiz.quiz_category.date %></b> 難易度: <b><%= @randomquiz.quiz_level.date %>向け</b></th>
+          <th>出題者: <b><%= @randomquiz.user.nickname %>さん</b> ジャンル: <b><%= @randomquiz.quiz_category.date %></b> 難易度: <b><%= @randomquiz.quiz_level.date %></b></th>
           </p>
           <h3><%= @randomquiz.quiz_text %></h3>
                   </div>
