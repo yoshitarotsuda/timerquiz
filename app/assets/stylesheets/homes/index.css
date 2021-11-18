@@ -4,6 +4,7 @@
 
 a{
   text-decoration: none;
+  
 }
 .header-list{
   display: flex;
@@ -13,6 +14,10 @@ a{
   list-style-type: none;
   font-size:10px;
   margin-right:20px;
+}
+.timer-set-main a{
+  border: 1px solid black;
+  padding:1px;
 }
 
 .timer-main{

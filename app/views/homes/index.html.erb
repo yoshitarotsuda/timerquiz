@@ -1,7 +1,9 @@
 
   <div>
     <ul  class="header-list">
+        <li><%= link_to 'TOP'%></li>
         <li><%= link_to 'ガイド'%></li>
+        <li><%= link_to '利用規約'%></li>
       <% if user_signed_in? %>
         <li><%= link_to "#{current_user.nickname}さん", "#", class: "user-nickname" %></li>
         <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "logout" %></li>
@@ -15,7 +17,7 @@
 
 <div class="home-main">
  
-  <form>
+  <form class="timer-set-main">
     <b>
       <input type ="number" id="set-hour" value="0" max="24"min="0">時間
       <input type ="number" id="set-min" value="0" max="59" min="0">分
