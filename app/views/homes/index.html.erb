@@ -25,6 +25,7 @@
 <div>
   <%= link_to 'クイズ作成', new_quiz_path %>
   <%= link_to 'クイズ一覧', quizzes_path %>
+  <a  href="#" id ="quiz-reset" >クイズ更新</a>
   <%# <span class="function">出題の30秒後に答えが30秒表示され、次の問題が表示されます</span> %>
 
   <% if @randomquiz.present? %>
@@ -33,7 +34,7 @@
           <%= link_to quiz_path(@randomquiz.id) do %>
           <b>『<%= @randomquiz.quiz_name %>』</b>
           <% end %>
-          <th>出題者: <%= @randomquiz.user.nickname %>さん ジャンル: <%= @randomquiz.quiz_category.date %> 難易度: <%= @randomquiz.quiz_level.date %>向け</th>
+          <th>出題者: <b><%= @randomquiz.user.nickname %>さん</b> ジャンル: <b><%= @randomquiz.quiz_category.date %></b> 難易度: <b><%= @randomquiz.quiz_level.date %>向け</b></th>
           </p>
           <h3><%= @randomquiz.quiz_text %></h3>
                   </div>
