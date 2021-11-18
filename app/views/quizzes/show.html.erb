@@ -16,7 +16,7 @@
   </details>
 </ul>
 
-<% if current_user.id == @quiz.user_id%>
+<% if user_signed_in? && current_user.id == @quiz.user_id%>
   <%= link_to '編集',edit_quiz_path(@quiz.id)%>
   <details>
     <summary>削除はこちらをクリック</summary>

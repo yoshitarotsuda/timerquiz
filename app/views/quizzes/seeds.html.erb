@@ -1,7 +1,10 @@
 <%= link_to 'トップページへ戻る',root_path %>
 <h2>seedsファイルテキストデータ獲得ページ</h2>
-<p>dbの中身をseeds.rbファイルにコピー&ペーストできる形で出力します。</p>
+<p>Quizモデルのdbの中身をseeds.rbファイルにコピー&ペーストできる形で出力します。</p>
+<p>「command」+ 「A」で全体コピーができます。</p>
+<p>簡単なdbの手動バックアップ先として実装しました。</p>
 
+<b>
 <% if @quizzes.present? %>
     <% @quizzes.each do |quiz| %>
       <div>
@@ -21,3 +24,4 @@
   <% else %>
     <p>出題がありません</p>
   <% end %>
+</b>

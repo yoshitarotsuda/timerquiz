@@ -7,7 +7,12 @@ class HomesController < ApplicationController
     # end
   end
 
-  def create
+  def guide
+  end
 
+  def terms
+  end
+
+  def record
   end
 end
