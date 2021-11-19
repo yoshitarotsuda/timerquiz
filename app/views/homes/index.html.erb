@@ -40,9 +40,9 @@
     <%= collection_select(:quiz,:level_id, QuizLevel.all, :id, :date, {}, {class:"hoge", id:"hoge"}) %>
     
     <a id ="quiz-search" >クイズ検索</a>
-    Answer <input type ="number" id="quiz-auto-time" value="0" max="300" min="0">秒
-    Next <input type ="number" id="answer-auto-time" value="0" max="300" min="0">秒
-    <a id ="quiz-auto" >クイズ自動</a>
+    Answer <input type ="number" id="answer-auto-time" value="0" max="300" min="0">秒
+    Next <input type ="number" id="quiz-auto-time" value="0" max="300" min="0">秒
+    <a href = "#" id ="quiz-auto" >クイズ自動</a>
 
     <%# <span class="function">出題の30秒後に答えが30秒表示され、次の問題が表示されます</span> %>
 
