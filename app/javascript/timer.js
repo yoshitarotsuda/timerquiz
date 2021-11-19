@@ -63,16 +63,14 @@ window.addEventListener('load',() => {
     timer(time);
   }
 
-  // 入力フォームの情報に5分をセット
+  // 入力フォームの情報に3分をセット
   function set3min(){
     document.getElementById("set-min").value = 3;
-    // min.value = 5;
   }
 
   // 入力フォームの情報に5分をセット
   function set5min(){
     document.getElementById("set-min").value = 5;
-    // min.value = 5;
   }
   
 

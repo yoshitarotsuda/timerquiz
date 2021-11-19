@@ -35,7 +35,11 @@
   <div>
     <%= link_to 'クイズ作成', new_quiz_path %>
     <%= link_to 'クイズ一覧', quizzes_path %>
-    <a  href="#" id ="quiz-reset" >クイズ更新</a>
+    
+    <%= collection_select(:quiz,:category_id, QuizCategory.all, :id, :date, {}, {class:"hoge", id:"hoge"}) %>
+    <%= collection_select(:quiz,:level_id, QuizLevel.all, :id, :date, {}, {class:"hoge", id:"hoge"}) %>
+    <a  href="#" id ="quiz-search" >クイズ検索</a>
+    <a  href="#" id ="quiz-search" >クイズ自動</a>
     <%# <span class="function">出題の30秒後に答えが30秒表示され、次の問題が表示されます</span> %>
 
     <% if @randomquiz.present? %>
@@ -50,7 +54,7 @@
                     </div>
           <details>
             <summary id="click-answer">答えはコチラをクリック</summary>
-              <li>解答<br><h3><%= @randomquiz.quiz_answer%><h3></li>
+              <li >解答<br><h3><%= @randomquiz.quiz_answer%><h3></li>
             <% if @randomquiz.quiz_sample.present? %>
               <li>解説・例文・使用例<br><h4><%= @randomquiz.quiz_sample%></h4></li>
             <% end %>
