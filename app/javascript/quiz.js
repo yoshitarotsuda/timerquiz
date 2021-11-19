@@ -1,4 +1,23 @@
-// window.addEventListener('load',() => {
+window.addEventListener('load',() => {
+
+  // ✖️ ボタンの取得
+  quizClearButtons = document.getElementsByClassName("quiz-clear");
+  console.log(quizClearButtons);
+
+  for (var i =0; i < quizClearButtons.length; i++){
+    quizClearButtons[i].addEventListener('click',clearQuiz);
+  }
+  
+  function clearQuiz(e){
+    console.log(e.target);
+    let quizClear = e.target.parentElement.parentElement.parentElement;
+    // let quizClear =  quizClearButtons[i].parentElement;
+    console.log(quizClear);
+    quizClear.remove();
+  }
+  
+
+
 //   const quizReset = document.getElementById("quiz-reset");
 //   quizReset.addEventListener('click',ajaxQuiz);
 
@@ -17,4 +36,4 @@
 //     };
 //   }
 
-// });
+});

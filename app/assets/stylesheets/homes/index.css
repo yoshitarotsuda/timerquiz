@@ -29,3 +29,14 @@ a{
 .function{
   font-size:15px;
 }
+
+.quiz{
+  border: 2px solid aquamarine;
+  margin: 2px 0;
+  padding: 1px;
+}
+
+.quiz-clear-button{
+  float:right;
+  margin:0 5px;
+}
