@@ -6,7 +6,7 @@
         <li><%= link_to '利用規約',terms_homes_path%></li>
         <li><%= link_to '開発記録',record_homes_path%></li>
       <% if user_signed_in? %>
-        <li><%= link_to "#{current_user.nickname}さん", "#", class: "user-nickname" %></li>
+        <li><%= link_to "#{current_user.nickname}さん", edit_user_registration_path, class: "user-nickname" %></li>
         <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "logout" %></li>
       <% else %>
         <li><%= link_to 'ログイン', new_user_session_path, class: "login" %></li>
@@ -32,23 +32,24 @@
   <div class="timer-main">
     <h1 id="timer-body"><span id="hour">00</span>：<span id="min">00</span>：<span id="sec">00</span><h1>
   </div>
-  <div>
+  <div id="quiz-main">
     <%= link_to 'クイズ作成', new_quiz_path %>
     <%= link_to 'クイズ一覧', quizzes_path %>
     <br>
-    <%= collection_select(:quiz,:category_id, QuizCategory.all, :id, :date, {}, {class:"hoge", id:"hoge"}) %>
-    <%= collection_select(:quiz,:level_id, QuizLevel.all, :id, :date, {}, {class:"hoge", id:"hoge"}) %>
+    <%= collection_select(:quiz,:category_id, QuizCategory.all, :id, :date, {}, {class:"hoge", id:"quiz-search-category"}) %>
+    <%= collection_select(:quiz,:level_id, QuizLevel.all, :id, :date, {}, {class:"hoge", id:"quiz-search-level"}) %>
     
-    <a id ="quiz-search" >クイズ検索</a>
-    Answer <input type ="number" id="quiz-auto-time" value="0" max="300" min="0">秒
-    Next <input type ="number" id="answer-auto-time" value="0" max="300" min="0">秒
-    <a id ="quiz-auto" >クイズ自動</a>
+    <a href= "#" id ="quiz-search" >クイズ検索</a>
+    <a href= "#" id ="reset-search" >元に戻す</a>
+    Answer <input type ="number" id="answer-auto-time" value="0" max="300" min="0">秒
+    Next <input type ="number" id="quiz-auto-time" value="0" max="300" min="0">秒
+    <a href = "#" id ="quiz-auto" >クイズ自動</a>
 
     <%# <span class="function">出題の30秒後に答えが30秒表示され、次の問題が表示されます</span> %>
 
     <% if @quizzes.present? %>
         <% @quizzes.each do |quiz|%>
-          <div class = "quiz" id = "quiz-<%= quiz.id%>-<%= quiz.quiz_category_id %>-<%= quiz.quiz_level_id %>">
+          <div class = "quiz quiz-<%= quiz.quiz_category_id %>-<%= quiz.quiz_level_id %>" id = "quiz-<%= quiz.id%>-<%= quiz.quiz_category_id %>-<%= quiz.quiz_level_id %>">
             <p>
             <%= link_to quiz_path(quiz.id) do %>
             <b>『<%= quiz.quiz_name %>』</b>

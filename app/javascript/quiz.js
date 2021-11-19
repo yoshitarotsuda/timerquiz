@@ -1,16 +1,37 @@
 window.addEventListener('load',() => {
+  quizAll();
+});
 
+function quizAll(){
+  // クイズ要素全ての取得
+  var defoultHTML = document.getElementById("quiz-main").innerHTML;
+  
   // ✖️ ボタンの取得
-  quizClearButtons = document.getElementsByClassName("quiz-clear");
+  const quizClearButtons = document.getElementsByClassName("quiz-clear");
 
-  // 解答ボタンの取得
-  //const answerButtons =document.getElementByClassName("click-answer");
+  // 自動ボタンの取得
+  const autoButton = document.getElementById("quiz-auto");
+  autoButton.addEventListener('click',clickAutoButton);
+  
+  // 検索ボタンの取得
+  const searchButton = document.getElementById("quiz-search");
+  searchButton.addEventListener('click',clickSearchButtun);
+
+  // 元に戻すボタンの取得
+  const resetSearchButton = document.getElementById("reset-search");
+  resetSearchButton.addEventListener('click',clickResetSearchButton);
 
   // ✖️ボタン全てのイベント設定
   for (var i =0; i < quizClearButtons.length; i++){
     quizClearButtons[i].addEventListener('click',clearQuiz);
   }
 
+  // クイズ検索
+  function clickSearchButtun(){
+    console.log(document.getElementById("quiz-search-category").selectedIndex);
+    console.log(document.getElementById("quiz-search-level"));
+  }
+  // クイズ削除
   function clearQuiz(e){
     console.log(e.target);
     let quizClear = e.target.parentElement.parentElement.parentElement;
@@ -18,8 +39,56 @@ window.addEventListener('load',() => {
     console.log(quizClear);
     quizClear.remove();
   }
-  
 
+  // 元に戻すボタン起動
+  function clickResetSearchButton(){
+    document.getElementById("quiz-main").innerHTML = defoultHTML;
+    quizAll();
+  }
+  // 自動ボタン切り替え
+  function clickAutoButton(){
+    if (autoButton.id == "quiz-auto"){
+      autoButton.id = "quiz-auto-stop";
+      autoButton.textContent = "クイズ停止";
+      const answertime  = Number(document.getElementById("answer-auto-time").value);
+      const quiztime  = Number(document.getElementById("quiz-auto-time").value);
+      autoQuiz(answertime,quiztime);
+    }else{
+      autoButton.id = "quiz-auto";
+      autoButton.textContent = "クイズ自動";
+      stopQuiz();
+    }
+  }
+
+  // 自動回答 自動削除
+  function autoQuiz(atime,qtime){
+    setTimeout(topAnswerButtonClick,atime * 1000);
+    quizClearIntervalId = setInterval(topQuizClearButtonClick,(atime + qtime) * 1000);
+    
+    function topAnswerButtonClick(){
+      let topAnswerButton = document.getElementsByClassName("click-answer")[0];
+      topAnswerButton.click();
+    }
+    function topQuizClearButtonClick(){
+      if(document.getElementsByClassName("click-answer")[0] == null || document.getElementsByClassName("quiz-clear")[0] == null){
+        stopQuiz();
+      }else{
+        setTimeout(topAnswerButtonClick,atime * 1000);
+        let topQuizClearButton = document.getElementsByClassName("quiz-clear")[0];
+        topQuizClearButton.click();
+      }
+    }
+  }
+  
+  function stopQuiz(){
+    clearInterval(quizClearIntervalId);
+  }
+
+
+
+  
+  
+  
 
 //   const quizReset = document.getElementById("quiz-reset");
 //   quizReset.addEventListener('click',ajaxQuiz);
@@ -38,5 +107,4 @@ window.addEventListener('load',() => {
 //       console.log();
 //     };
 //   }
-
-});
+}
