@@ -15,8 +15,7 @@ window.addEventListener('load',() => {
   const reset_element = resetButton.querySelector("a");
   reset_element.addEventListener('click',resetTimer);
 
-  // 解答ボタンの取得
-  const clickAnswer =document.getElementById("click-answer");
+
   
   // 3分ボタンの取得
   const click3min =document.getElementById("3-min");
@@ -100,7 +99,6 @@ window.addEventListener('load',() => {
         timer_bell.play();
         button_element.id = "timer-start";
         button_element.textContent = "開始";
-        clickAnswer.click();
       }else if(document.getElementById("timer-restart")){
         nowTime = time;
         clearTimeout(timeoutId);
