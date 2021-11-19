@@ -20,12 +20,8 @@
     <%= f.password_field :password, autocomplete: "new-password" %>
   </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
   <div class="actions">
     <%= f.submit "Sign up" %>
   </div>
 <% end %>
+<p>確認メールの送信がなく、個人情報の取り扱いも難しいので登録してクイズを投稿したい方はemailに「test1@test.com」、passwordに「t11111」のような適当なメールアドレスパスワードで登録することを推奨します。入力が弾かれる場合は数値を変更するとおそらく登録できます。</p>

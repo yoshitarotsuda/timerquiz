@@ -1,3 +1,4 @@
+
 .home-main{
   list-style-type: none;
 }
@@ -5,14 +6,19 @@
 a{
   text-decoration: none;
 }
-.login-info{
+
+.header-list{
   display: flex;
-  list-style-type: none;
 }
 
-.login-info li{
+.header-list li{
+  list-style-type: none;
   font-size:10px;
   margin-right:20px;
+}
+.timer-set-main a{
+  border: 1px solid black;
+  padding:1px;
 }
 
 .timer-main{
@@ -22,4 +28,15 @@ a{
 
 .function{
   font-size:15px;
+}
+
+.quiz{
+  border: 2px solid aquamarine;
+  margin: 2px 0;
+  padding: 1px;
+}
+
+.quiz-clear-button{
+  float:right;
+  margin:0 5px;
 }

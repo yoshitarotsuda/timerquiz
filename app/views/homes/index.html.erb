@@ -1,6 +1,10 @@
-<div class="home-main">
+
   <div>
-    <ul class="login-info">
+    <ul  class="header-list">
+        <li><%= link_to 'TOP'%></li>
+        <li><%= link_to '利用ガイド',guide_homes_path%></li>
+        <li><%= link_to '利用規約',terms_homes_path%></li>
+        <li><%= link_to '開発記録',record_homes_path%></li>
       <% if user_signed_in? %>
         <li><%= link_to "#{current_user.nickname}さん", "#", class: "user-nickname" %></li>
         <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "logout" %></li>
@@ -8,10 +12,13 @@
         <li><%= link_to 'ログイン', new_user_session_path, class: "login" %></li>
         <li><%= link_to '新規登録', new_user_registration_path, class: "sign-up" %></li>
       <% end %>
+      
     </ul>
   </div>
 
-  <form>
+<div class="home-main">
+ 
+  <form class="timer-set-main">
     <b>
       <input type ="number" id="set-hour" value="0" max="24"min="0">時間
       <input type ="number" id="set-min" value="0" max="59" min="0">分
@@ -28,27 +35,36 @@
   <div>
     <%= link_to 'クイズ作成', new_quiz_path %>
     <%= link_to 'クイズ一覧', quizzes_path %>
-    <a  href="#" id ="quiz-reset" >クイズ更新</a>
+    <br>
+    <%= collection_select(:quiz,:category_id, QuizCategory.all, :id, :date, {}, {class:"hoge", id:"hoge"}) %>
+    <%= collection_select(:quiz,:level_id, QuizLevel.all, :id, :date, {}, {class:"hoge", id:"hoge"}) %>
+    
+    <a id ="quiz-search" >クイズ検索</a>
+    Answer <input type ="number" id="quiz-auto-time" value="0" max="300" min="0">秒
+    Next <input type ="number" id="answer-auto-time" value="0" max="300" min="0">秒
+    <a id ="quiz-auto" >クイズ自動</a>
+
     <%# <span class="function">出題の30秒後に答えが30秒表示され、次の問題が表示されます</span> %>
 
-    <% if @randomquiz.present? %>
-          <div>
-            <p>タイトル 
-            <%= link_to quiz_path(@randomquiz.id) do %>
-            <b>『<%= @randomquiz.quiz_name %>』</b>
+    <% if @quizzes.present? %>
+        <% @quizzes.each do |quiz|%>
+          <div class = "quiz" id = "quiz-<%= quiz.id%>-<%= quiz.quiz_category_id %>-<%= quiz.quiz_level_id %>">
+            <p>
+            <%= link_to quiz_path(quiz.id) do %>
+            <b>『<%= quiz.quiz_name %>』</b>
             <% end %>
-            <th>出題者: <b><%= @randomquiz.user.nickname %>さん</b> ジャンル: <b><%= @randomquiz.quiz_category.date %></b> 難易度: <b><%= @randomquiz.quiz_level.date %></b></th>
+            <th>出題者: <b><%= quiz.user.nickname %>さん</b> ジャンル: <b><%= quiz.quiz_category.date %></b> 難易度: <b><%= quiz.quiz_level.date %></b><b class ="quiz-clear-button" ><a href ="#" class ="quiz-clear" id ="quiz-clear-<%= quiz.id%>">✖️</a></b></th>
             </p>
-            <h3><%= @randomquiz.quiz_text %></h3>
-                    </div>
-          <details>
-            <summary id="click-answer">答えはコチラをクリック</summary>
-              <li>解答<br><h3><%= @randomquiz.quiz_answer%><h3></li>
-            <% if @randomquiz.quiz_sample.present? %>
-              <li>解説・例文・使用例<br><h4><%= @randomquiz.quiz_sample%></h4></li>
-            <% end %>
-          </details>
-        </div>
+            <h3><%= quiz.quiz_text %></h3>
+            <details>
+              <summary class="click-answer">答えはコチラをクリック</summary>
+                <li >解答<br><h3><%= quiz.quiz_answer%><h3></li>
+              <% if quiz.quiz_sample.present? %>
+                <li>解説・例文・使用例<br><h4><%= quiz.quiz_sample%></h4></li>
+              <% end %>
+            </details>
+          </div>
+        <% end %>  
     <% else %>
       <p>出題がありません</p>
     <% end %>

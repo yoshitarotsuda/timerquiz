@@ -1,0 +1,27 @@
+<%= link_to 'トップページへ戻る',root_path %>
+<h2>seedsファイルテキストデータ獲得ページ</h2>
+<p>Quizモデルのdbの中身をseeds.rbファイルにコピー&ペーストできる形で出力します。</p>
+<p>「command」+ 「A」で全体コピーができます。</p>
+<p>簡単なdbの手動バックアップ先として実装しました。</p>
+
+<b>
+<% if @quizzes.present? %>
+    <% @quizzes.each do |quiz| %>
+      <div>
+        <p>Quiz.create!(</p>
+        <p>quiz_name:'<%= quiz.quiz_name%>',</p>
+        <p>quiz_category_id:<%= quiz.quiz_category_id%>,</p>
+        <p>quiz_level_id:<%= quiz.quiz_level_id%>,</p>
+        <p>quiz_text:'<%= quiz.quiz_text%>',</p>
+        <p>quiz_answer:'<%= quiz.quiz_answer%>',</p>
+        <% if quiz.quiz_sample.present? %>
+        <p>quiz_sample:'<%= quiz.quiz_sample%>',</p>
+        <% end %>
+        <p>user_id:<%= quiz.user_id%>,</p>
+        <p>)</p>
+      </div>
+    <% end %>
+  <% else %>
+    <p>出題がありません</p>
+  <% end %>
+</b>

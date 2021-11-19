@@ -1,5 +1,6 @@
 <%= link_to 'トップページへ戻る',root_path %>
 <h2>一覧ページ</h2>
+<%= link_to '[seedsファイル生成]' ,seeds_quizzes_path %>
 <div>
   <% if @quizzes.present? %>
     <% @quizzes.each do |quiz| %>
