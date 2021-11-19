@@ -4,7 +4,7 @@ window.addEventListener('load',() => {
   quizClearButtons = document.getElementsByClassName("quiz-clear");
 
   // 解答ボタンの取得
-  //const answerButtons =document.getElementByClassName("click-answer");
+  const answerButtons = document.getElementsByClassName("click-answer");
 
   // ✖️ボタン全てのイベント設定
   for (var i =0; i < quizClearButtons.length; i++){
@@ -19,6 +19,9 @@ window.addEventListener('load',() => {
     quizClear.remove();
   }
   
+  function autoQuiz(){
+
+  }
 
 
 //   const quizReset = document.getElementById("quiz-reset");

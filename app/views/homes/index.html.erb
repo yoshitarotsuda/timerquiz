@@ -6,7 +6,7 @@
         <li><%= link_to '利用規約',terms_homes_path%></li>
         <li><%= link_to '開発記録',record_homes_path%></li>
       <% if user_signed_in? %>
-        <li><%= link_to "#{current_user.nickname}さん", "#", class: "user-nickname" %></li>
+        <li><%= link_to "#{current_user.nickname}さん", edit_user_registration_path, class: "user-nickname" %></li>
         <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "logout" %></li>
       <% else %>
         <li><%= link_to 'ログイン', new_user_session_path, class: "login" %></li>
