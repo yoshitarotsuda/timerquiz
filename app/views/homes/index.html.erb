@@ -49,7 +49,7 @@
 
     <% if @quizzes.present? %>
         <% @quizzes.each do |quiz|%>
-          <div class = "quiz quiz-<%= quiz.quiz_category_id %>-<%= quiz.quiz_level_id %>" id = "quiz-<%= quiz.id%>-<%= quiz.quiz_category_id %>-<%= quiz.quiz_level_id %>">
+          <div class = "quiz quiz-category-<%= quiz.quiz_category_id %> quiz-level-<%= quiz.quiz_level_id %>" id = "quiz-<%= quiz.id%>-<%= quiz.quiz_category_id %>-<%= quiz.quiz_level_id %>">
             <p>
             <%= link_to quiz_path(quiz.id) do %>
             <b>『<%= quiz.quiz_name %>』</b>

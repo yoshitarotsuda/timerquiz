@@ -28,8 +28,29 @@ function quizAll(){
 
   // クイズ検索
   function clickSearchButtun(){
-    console.log(document.getElementById("quiz-search-category").selectedIndex);
-    console.log(document.getElementById("quiz-search-level"));
+    category = document.getElementById("quiz-search-category").selectedIndex;
+    level = document.getElementById("quiz-search-level").selectedIndex;
+    if (category != 0){
+      for(var i=1; i <= 20; i++){
+        if(i != category){
+          let categorySerchQuizzes = document.getElementsByClassName(`quiz-category-${i}`);
+          while(categorySerchQuizzes.length){
+            categorySerchQuizzes.item(0).remove();
+          }
+        }
+      }
+    }
+    if (level != 0){
+      console.log("test")
+      for(var i=1; i <= 5; i++){
+        if(i != level){
+          let levelSerchQuizzes = document.getElementsByClassName(`quiz-level-${i}`);
+          while(levelSerchQuizzes.length){
+            levelSerchQuizzes.item(0).remove();
+          }
+        }
+      }
+    }
   }
   // クイズ削除
   function clearQuiz(e){
