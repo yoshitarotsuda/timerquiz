@@ -20,7 +20,7 @@ quiz_answer:'Bootstrap',
 
 quiz_sample:'このフレームワークは本来CSSを書く場合全てのスタイルを自分で作っていく必要があるところ、よく使われるスタイルがあらかじめ定義されており、ルールに沿って利用するだけで整ったページのデザインを作成できるものとなっています。',
 
-user_id:1,
+user_id:5,
 
 )
 
@@ -38,7 +38,7 @@ quiz_answer:'white-space',
 
 quiz_sample:'ホワイトスペースを折り畳むかどうか、及その方法。行を自動で折り返す場面で折り返すことができるかどうか。この二つを指定できます。',
 
-user_id:1,
+user_id:5,
 
 )
 
@@ -56,7 +56,7 @@ quiz_answer:'ブラウザ上でHTML,CSS,JavaScriptのコードを記述し、リ
 
 quiz_sample:'基本無料で使うことができます(2021/11/19時点)。ソースコード、その表示を他のサイトに埋め込み(シェアできる)外部ライブラリも使用できるなどが特徴となっています。',
 
-user_id:1,
+user_id:5,
 
 )
 
@@ -74,7 +74,7 @@ quiz_answer:'アプリケーションが他のアプリケーションに対し�
 
 quiz_sample:'具体例としてはGoogleやTwitterやFaceBookでのログイン機能。これらを始め多種多様なアプリケーションサービスが提供しています。',
 
-user_id:1,
+user_id:5,
 
 )
 
@@ -92,7 +92,7 @@ quiz_answer:'seeds.rbファイル',
 
 quiz_sample:'/db/seeds.rbに配置されているファイルであり、rails db:seedコマンドによりファイル内の記述データをまとめて該当モデルのテーブルに記述することができる便利なファイルです。',
 
-user_id:1,
+user_id:5,
 
 )
 
@@ -110,7 +110,7 @@ quiz_answer:'text-decoration: none;',
 
 quiz_sample:'使用例としてはこのようにa要素全てにまとめて適用することがあります。 a{ text-decoration: none; }',
 
-user_id:1,
+user_id:5,
 
 )
 
@@ -128,7 +128,7 @@ quiz_answer:'devise (デバイス)',
 
 quiz_sample:'ユーザー管理機能を簡単に実装するためのGemです。実際に運用されている多くのRailsアプリケーションサービスで使用されています。',
 
-user_id:1,
+user_id:5,
 
 )
 
@@ -146,7 +146,7 @@ quiz_answer:'「Asynchronous JavaScript XML」　の略です',
 
 quiz_sample:'非同期のJavaScirptとXMLを使ったサーバーとの通信のことです。ページの更新を行わずにサーバーとの通信を行い、更新した部分だけの表示を変更するといった機能を実装するときなどに使われます。',
 
-user_id:1,
+user_id:5,
 
 )
 
@@ -164,7 +164,7 @@ quiz_answer:'まつもと　ゆきひろ',
 
 quiz_sample:'Rubyは、まつもと ゆきひろ氏により1995年に発表されたプログラミング言語です。 日本で開発されたプログラミング言語としては初めて国際電気標準会議(IEC)で国際規格に認証されたものです。',
 
-user_id:1,
+user_id:5,
 
 )
 
@@ -182,6 +182,6 @@ quiz_answer:'Information Technology (インフォメーション・テクノロ�
 
 quiz_sample:'直訳で情報技術の意味です。 ざっくりとコンピューターやサイバー関連の技術を表して使われることが多いです。',
 
-user_id:1,
+user_id:5,
 
 )
