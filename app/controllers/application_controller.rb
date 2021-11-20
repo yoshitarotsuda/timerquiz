@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def configure_permitted_parameters # メソッド名は慣例 sign_up 新規登録のストロングパラメーター
+  def configure_permitted_parameters # メソッド名は慣例 userのストロングパラメーター
     devise_parameter_sanitizer.permit(:sign_up, keys: [:nickname])
 
     devise_parameter_sanitizer.permit(:account_update, keys: [:nickname])
