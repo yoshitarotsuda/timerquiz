@@ -30,8 +30,6 @@ function quizAll(){
   function clickSearchButtun(){
     category = document.getElementById("quiz-search-category").selectedIndex;
     level = document.getElementById("quiz-search-level").selectedIndex;
-    console.log(document.getElementById("quiz-search-category").selectedIndex);
-    console.log(document.getElementById("quiz-search-level").selectedIndex);
     if (category != 0){
       for(var i=1; i <= 20; i++){
         if(i != category){
