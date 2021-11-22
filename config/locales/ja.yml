@@ -1,0 +1,12 @@
+ja:
+  activerecord:
+    attributes:
+      user:
+        nickname: ニックネーム
+      quiz:
+        quiz_name: クイズ名
+        quiz_category_id: クイズのカテゴリー
+        quiz_level_id: 難易度
+        quiz_text: 問題文
+        quiz_answer: 解答
+        quiz_sample: 解説・例文・使用例
