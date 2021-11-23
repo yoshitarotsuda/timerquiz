@@ -71,7 +71,7 @@ image or gif
 
 | Column             | Type       | Options                       |
 | ------------------ | ---------- | ----------------------------- |
-| comment            | text       | null: false                   |
+| like_id            | integer    | null: false                   |
 | user               | references | null: false, foreign_key:true |
 | item               | references | null: false, foreign_key:true |
 
