@@ -12,5 +12,6 @@ Rails.application.routes.draw do
     collection do
       get 'seeds'
     end
+    resources :comments, only: [:create, :destroy]
   end
 end

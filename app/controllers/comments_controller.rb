@@ -1,6 +1,17 @@
 class CommentsController < ApplicationController
   def create
-    Comment.create(comment_params)
+    @comment = Comment.new(comment_params)
+    if @comment.save
+      redirect_to quiz_path(params[:quiz_id])
+    end
+  end
+
+  def destroy 
+    comment = Comment.find(params[:id])
+    if current_user.id == comment[:user_id]
+      comment.destroy
+      redirect_to quiz_path(params[:quiz_id])
+    end
   end
 
   private
