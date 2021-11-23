@@ -2,8 +2,10 @@ class CommentsController < ApplicationController
   def create
     @comment = Comment.new(comment_params)
     if @comment.save
+      flash[:notice] = "投稿に成功しました！"
       redirect_to quiz_path(params[:quiz_id])
     end
+
   end
 
   def destroy 

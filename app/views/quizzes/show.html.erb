@@ -38,6 +38,8 @@
 </div>
 
 <div class="comment-box">
+  <%= flash[:notice] %>
+  <%= flash.now[:alert] %>
     <%= form_with model: @comment, url:quiz_comments_path(@quiz.id), local: true do |f| %>
       <%= f.text_area :comment, class:"comment-text" %>
       <p class="comment-warn">
