@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="iK9eycRJPg6SYrZd0W95" name="ページ１">
-        <mxGraphModel dx="560" dy="526" grid="1" gridSize="10" guides="1" tooltips="0" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+        <mxGraphModel dx="407" dy="526" grid="1" gridSize="10" guides="1" tooltips="0" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
             <root>
                 <mxCell id="VafTBtpye_XPdqLhDcZI-0"/>
                 <mxCell id="VafTBtpye_XPdqLhDcZI-1" parent="VafTBtpye_XPdqLhDcZI-0"/>
@@ -127,7 +127,7 @@
                         <mxPoint x="760" y="150" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="21" value="評価情報(いいね！、おかしくない？)" style="whiteSpace=wrap;html=1;align=center;rounded=1;glass=0;labelBackgroundColor=none;strokeColor=#36393d;fillColor=#eeeeee;fontColor=#000000;fontStyle=1" parent="VafTBtpye_XPdqLhDcZI-1" vertex="1">
+                <mxCell id="21" value="評価情報(いいね！、合ってる？)" style="whiteSpace=wrap;html=1;align=center;rounded=1;glass=0;labelBackgroundColor=none;strokeColor=#36393d;fillColor=#eeeeee;fontColor=#000000;fontStyle=1" parent="VafTBtpye_XPdqLhDcZI-1" vertex="1">
                     <mxGeometry x="760" y="230" width="210" height="40" as="geometry"/>
                 </mxCell>
                 <mxCell id="22" value="likesテーブル" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;align=center;fontSize=14;rounded=1;labelBackgroundColor=none;fillColor=#eeeeee;strokeColor=#36393d;fontColor=#000000;" parent="VafTBtpye_XPdqLhDcZI-1" vertex="1">
