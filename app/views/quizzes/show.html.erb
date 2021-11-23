@@ -23,9 +23,21 @@
       <p>本当に削除しますか？<%= link_to "YES",quiz_path(@quiz.id), method: :delete %></p>
   </details>
 <% end %>
+
 <div>
   <h6>いいね！ <%= %> 合ってる？ <%= %><h6>
+  <%= form_with model: @like, url:quiz_likes_path(@quiz.id), local: true do |f| %>
+  <%= f.hidden_field :like_id, value: 1 %>
+  <%= f.submit 'いいね！'%>
+  <% end %>
   
+  <%= form_with model: @like, url:quiz_likes_path(@quiz.id), local: true do |f| %>
+  <%= f.hidden_field :like_id, value: -1 %>
+  <%= f.submit '合ってる？'%>
+  <% end %>
+  <% if user_signed_in? && Like.exists?(quiz_id: @quiz.id,user_id: current_user.id)%>
+  <%= link_to "取消",quiz_like_path(@quiz.id, @like.id), method: :delete %>
+  <% end %>
 </div>
 <div>
   <h3>コメント</h3>

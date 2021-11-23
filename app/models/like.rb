@@ -7,5 +7,5 @@ class Like < ApplicationRecord
     validates :quiz_id
     validates :like_id
   end
-  validates_uniquness_of :quiz_id, scope: :user_id
+  validates_uniqueness_of :quiz_id, scope: :user_id
 end
