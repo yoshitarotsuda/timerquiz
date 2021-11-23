@@ -1,6 +1,7 @@
 class Quiz < ApplicationRecord
   belongs_to :user
   has_many :comments
+  has_many :likes
   # 選択肢用のアソシエーション 記述するときにカラム名にしないように注意
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :quiz_category
