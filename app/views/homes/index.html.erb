@@ -54,7 +54,7 @@
             <%= link_to quiz_path(quiz.id) do %>
             <b>『<%= quiz.quiz_name %>』</b>
             <% end %>
-            <th>出題者: <b><%= quiz.user.nickname %>さん</b> ジャンル: <b><%= quiz.quiz_category.date %></b> 難易度: <b><%= quiz.quiz_level.date %></b><b class ="quiz-clear-button" ><a href ="#" class ="quiz-clear" id ="quiz-clear-<%= quiz.id%>">✖️</a></b></th>
+            <th>出題者: <b><%= quiz.user.nickname %>さん</b> ジャンル: <b><%= quiz.quiz_category.date %></b> 難易度: <b><%= quiz.quiz_level.date %></b></b> コメント数: <b><%= quiz.comments.length %></b><b class ="quiz-clear-button" ><a href ="#" class ="quiz-clear" id ="quiz-clear-<%= quiz.id%>">✖️</a></b></th>
             </p>
             <h3><%= quiz.quiz_text %></h3>
             <details>
