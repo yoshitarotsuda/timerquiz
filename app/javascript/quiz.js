@@ -55,7 +55,7 @@ function quizAll(){
   // クイズ削除
   function clearQuiz(e){
     console.log(e.target);
-    let quizClear = e.target.parentElement.parentElement.parentElement;
+    let quizClear = e.target.parentElement.parentElement;
     // let quizClear =  quizClearButtons[i].parentElement;
     console.log(quizClear);
     quizClear.remove();
