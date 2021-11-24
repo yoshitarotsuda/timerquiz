@@ -1,38 +1,42 @@
 <div class="home-main">
   <div class="timer-box">
-    
     <div class="timer-main">
       <h1 id="timer-body"><span id="hour">00</span>：<span id="min">00</span>：<span id="sec">00</span><h1>
     </div>
     <div>
-    <form class="timer-set-main">
-      <b class ="timer-set-left">
-        <input type ="number" id="set-hour" value="0" max="24"min="0">時間
-        <input type ="number" id="set-min" value="0" max="59" min="0">分
-        <input type ="number" id="set-sec" value="0" max="59" min="0">秒
-      </b>
-      <b id = "timer-button"><a href ="#" id ="timer-start" >開始</a></b>
-      <b id = "3min-button"><a href ="#" id ="3-min" >3分</a></b>
-      <b id = "5min-button"><a href ="#" id ="5-min" >5分</a></b>
-      <b id = "reset-button"><a id ="timer-reset" >リセット</a></b>
-    </form>
+      <form class="timer-set-main">
+        <b class ="timer-set-left">
+          <input type ="number" id="set-hour" value="0" max="24"min="0">時間
+          <input type ="number" id="set-min" value="0" max="59" min="0">分
+          <input type ="number" id="set-sec" value="0" max="59" min="0">秒
+        </b>
+        <b id = "timer-button"><a href ="#" id ="timer-start" >開始</a></b>
+        <b id = "3min-button"><a href ="#" id ="3-min" >3分</a></b>
+        <b id = "5min-button"><a href ="#" id ="5-min" >5分</a></b>
+        <b id = "reset-button"><a id ="timer-reset" >リセット</a></b>
+      </form>
     </div>
   </div>
   <div id="quiz-main">
-    <%= link_to 'クイズ作成', new_quiz_path %>
-    <%= link_to 'クイズ一覧', quizzes_path %>
-    <br>
-    <%= collection_select(:quiz,:category_id, QuizCategory.all, :id, :date, {}, {class:"hoge", id:"quiz-search-category"}) %>
-    <%= collection_select(:quiz,:level_id, QuizLevel.all, :id, :date, {}, {class:"hoge", id:"quiz-search-level"}) %>
-    
-    <a href= "#" id ="quiz-search" >クイズ検索</a>
-    <a href= "#" id ="reset-search" >元に戻す</a>
-    Answer <input type ="number" id="answer-auto-time" value="0" max="300" min="0">秒
-    Next <input type ="number" id="quiz-auto-time" value="0" max="300" min="0">秒
-    <a href = "#" id ="quiz-auto" >クイズ自動</a>
-
-    <%# <span class="function">出題の30秒後に答えが30秒表示され、次の問題が表示されます</span> %>
-
+    <div class="quiz-edit-index">
+      <b><%= link_to 'クイズ作成', new_quiz_path %></b>
+      <b><%= link_to 'クイズ一覧', quizzes_path %></b>
+      <b><a href= "#" id ="reset-search" >元に戻す</a></b>
+    </div>
+    <div class="quiz-search-auto">
+      <ul>
+      <li>
+        <b><%= collection_select(:quiz,:category_id, QuizCategory.all, :id, :date, {}, {class:"hoge", id:"quiz-search-category"}) %>
+        <%= collection_select(:quiz,:level_id, QuizLevel.all, :id, :date, {}, {class:"hoge", id:"quiz-search-level"}) %>
+        <a href= "#" id ="quiz-search" >クイズ検索</a></b>  
+      </li>
+      <li>
+        <b>解答 <input type ="number" id="answer-auto-time" value="0" max="300" min="0">秒</b>
+        <b>次問 <input type ="number" id="quiz-auto-time" value="0" max="300" min="0">秒</b>
+        <b><a href = "#" id ="quiz-auto" >クイズ自動</a></b>
+      </li>
+      </ul>
+    </div>
     <% if @quizzes.present? %>
         <% @quizzes.each do |quiz|%>
           <div class = "quiz quiz-category-<%= quiz.quiz_category_id %> quiz-level-<%= quiz.quiz_level_id %>" id = "quiz-<%= quiz.id%>-<%= quiz.quiz_category_id %>-<%= quiz.quiz_level_id %>">

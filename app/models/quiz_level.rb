@@ -1,6 +1,6 @@
 class QuizLevel < ActiveHash::Base
   self.data = [
-    { id: 0, date: '---' },
+    { id: 0, date: '難易度' },
     { id: 1, date: '初心' },
     { id: 2, date: '初級' },
     { id: 3, date: '中級' },

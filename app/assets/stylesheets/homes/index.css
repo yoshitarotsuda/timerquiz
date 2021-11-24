@@ -55,13 +55,50 @@ header{
 .timer-set-main b input{
   border-radius: 7px;
 }
-.timer-main{
+.timer-main {
   font-size:35px;
-  background: linear-gradient(to bottom,rgb(199, 255, 236) 0%, rgb(153, 255, 221) 50%,rgb(21, 241, 230) 100%);
-  -webkit-background-clip: text;
-  color:transparent;
+  /* background: linear-gradient(to bottom,rgb(199, 255, 236) 0%, rgb(153, 255, 221) 50%,rgb(21, 241, 230) 100%);
+  -webkit-background-clip: text; */
+  color:aquamarine;
   display: flex;
   justify-content:center;
+}
+
+.quiz-edit-index{
+  display: flex;
+  justify-content:center;
+  margin-bottom: 5px;
+}
+.quiz-edit-index a{
+  padding: 4px;
+  margin:0 2px;
+  text-shadow: 0 1px 0 #eee;
+  background: linear-gradient(to bottom,rgb(199, 255, 236) 0%, rgb(153, 255, 221) 50%,rgb(21, 241, 230) 100%);
+  border-radius: 7px;
+}
+
+.quiz-search-auto ul{
+  display: flex;
+  justify-content: center;
+}
+.quiz-search-auto ul li{
+  margin-right: 20px;
+}
+.quiz-search-auto select{
+  font-size:15px;
+  font-weight:bold;
+  border-radius: 7px;
+}
+.quiz-search-auto input{
+  border-radius: 7px;
+}
+
+#quiz-search,#quiz-auto,#reset-search,#quiz-auto-stop{
+  padding: 4px;
+  margin:0 2px;
+  text-shadow: 0 1px 0 #eee;
+  background: linear-gradient(to bottom,rgb(194, 199, 195) 0%, rgb(202, 202, 202) 50%,rgb(134, 134, 134) 100%);
+  border-radius: 7px;
 }
 
 .function{
@@ -77,5 +114,5 @@ header{
 
 .quiz-clear-button{
   float:right;
-  margin:0 5px;
+  margin:0 3px;
 }
