@@ -42,12 +42,15 @@ header{
 }
 .timer-set-main a{
   border: 1px solid black;
-  padding: 1px;
+  padding: 2px;
   margin:0 2px;
   background: linear-gradient(to bottom,rgb(194, 199, 195) 0%, rgb(202, 202, 202) 50%,rgb(134, 134, 134) 100%);
   border-radius: 7px;
 }
 
+.timer-set-left {
+  margin-right: 15px;
+}
 .timer-set-main b input{
   border-radius: 7px;
 }
@@ -67,6 +70,7 @@ header{
   border: 2px solid aquamarine;
   margin: 2px 0;
   padding: 1px;
+  border-radius: 7px;
 }
 
 .quiz-clear-button{
