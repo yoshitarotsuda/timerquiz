@@ -7,15 +7,32 @@ a{
   text-decoration: none;
 }
 
-.header-list{
+header{
+  width: 100%;
+  background: linear-gradient(to bottom,rgb(194, 199, 195) 0%, rgb(202, 202, 202) 50%,rgb(134, 134, 134) 100%);
+  color: #333;
+  text-shadow: 0 1px 0 #eee;
   display: flex;
+  justify-content: space-between;
 }
 
-.header-list li{
-  list-style-type: none;
-  font-size:10px;
-  margin-right:20px;
+.header-left .top{
+  margin-right:5px;
 }
+.header-left li{
+  text-align: left;
+  display:inline-block;
+  font-size: 13px;
+}
+
+.header-right{
+  margin-right: 20px;
+}
+.header-right li{
+  display:inline-block;
+  font-size: 13px;
+}
+
 .timer-set-main a{
   border: 1px solid black;
   padding:1px;
