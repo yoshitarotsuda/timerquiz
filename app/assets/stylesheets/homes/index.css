@@ -33,14 +33,24 @@ header{
   font-size: 13px;
 }
 
+.timer-box{
+ 
+}
+.timer-set-main{
+  display: flex;
+  justify-content:center;
+}
 .timer-set-main a{
   border: 1px solid black;
-  padding:1px;
+  padding: 1px;
+  margin:0 2px;
 }
 
 .timer-main{
-  font-size:40px;
+  font-size:35px;
   color:aquamarine;
+  display: flex;
+  justify-content:center;
 }
 
 .function{

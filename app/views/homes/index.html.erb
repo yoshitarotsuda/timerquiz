@@ -1,19 +1,22 @@
-
 <div class="home-main">
- 
-  <form class="timer-set-main">
-    <b>
-      <input type ="number" id="set-hour" value="0" max="24"min="0">時間
-      <input type ="number" id="set-min" value="0" max="59" min="0">分
-      <input type ="number" id="set-sec" value="0" max="59" min="0">秒
-    </b>
-    <b id = "timer-button"><a href ="#" id ="timer-start" >開始</a></b>
-    <b id = "3min-button"><a href ="#" id ="3-min" >3分</a></b>
-    <b id = "5min-button"><a href ="#" id ="5-min" >5分</a></b>
-    <b id = "reset-button"><a id ="timer-reset" >リセット</a></b>
-  </form>
-  <div class="timer-main">
-    <h1 id="timer-body"><span id="hour">00</span>：<span id="min">00</span>：<span id="sec">00</span><h1>
+  <div class="timer-box">
+    
+    <div class="timer-main">
+      <h1 id="timer-body"><span id="hour">00</span>：<span id="min">00</span>：<span id="sec">00</span><h1>
+    </div>
+    <div>
+    <form class="timer-set-main">
+      <b>
+        <input type ="number" id="set-hour" value="0" max="24"min="0">時間
+        <input type ="number" id="set-min" value="0" max="59" min="0">分
+        <input type ="number" id="set-sec" value="0" max="59" min="0">秒
+      </b>
+      <b id = "timer-button"><a href ="#" id ="timer-start" >開始</a></b>
+      <b id = "3min-button"><a href ="#" id ="3-min" >3分</a></b>
+      <b id = "5min-button"><a href ="#" id ="5-min" >5分</a></b>
+      <b id = "reset-button"><a id ="timer-reset" >リセット</a></b>
+    </form>
+    </div>
   </div>
   <div id="quiz-main">
     <%= link_to 'クイズ作成', new_quiz_path %>
