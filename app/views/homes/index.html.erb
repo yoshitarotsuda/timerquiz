@@ -50,11 +50,26 @@
     <% if @quizzes.present? %>
         <% @quizzes.each do |quiz|%>
           <div class = "quiz quiz-category-<%= quiz.quiz_category_id %> quiz-level-<%= quiz.quiz_level_id %>" id = "quiz-<%= quiz.id%>-<%= quiz.quiz_category_id %>-<%= quiz.quiz_level_id %>">
+            <b class ="quiz-clear-button" ><a href ="#" class ="quiz-clear" id ="quiz-clear-<%= quiz.id%>">✖️</a></b>
             <p>
             <%= link_to quiz_path(quiz.id) do %>
             <b>『<%= quiz.quiz_name %>』</b>
             <% end %>
-            <th>出題者: <b><%= quiz.user.nickname %>さん</b> ジャンル: <b><%= quiz.quiz_category.date %></b> 難易度: <b><%= quiz.quiz_level.date %></b></b> コメント数: <b><%= quiz.comments.length %></b><b class ="quiz-clear-button" ><a href ="#" class ="quiz-clear" id ="quiz-clear-<%= quiz.id%>">✖️</a></b></th>
+            出題者: <b><%= quiz.user.nickname %>さん</b>
+            ジャンル: <b><%= quiz.quiz_category.date %></b>
+            難易度: <b><%= quiz.quiz_level.date %></b></b>
+            コメント数: 
+            <%= link_to quiz_path(quiz.id) do %>
+            <b><%= quiz.comments.length %></b>
+            <% end %>
+            いいね！: 
+            <%= link_to quiz_path(quiz.id) do %>
+            <b><%=quiz.likes.where(like_id: 1).length %></b>
+            <% end %>
+            合ってる？: 
+            <%= link_to quiz_path(quiz.id) do %>
+            <b><%=quiz.likes.where(like_id: -1).length %></b>
+            <% end %>
             </p>
             <h3><%= quiz.quiz_text %></h3>
             <details>

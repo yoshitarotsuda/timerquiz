@@ -23,12 +23,33 @@
       <p>本当に削除しますか？<%= link_to "YES",quiz_path(@quiz.id), method: :delete %></p>
   </details>
 <% end %>
+
+<div>
+  <h6>いいね！ <%=@quiz.likes.where(like_id: 1).length %> 合ってる？ <%= @quiz.likes.where(like_id: -1).length%><h6>
+  <% if user_signed_in? %>
+    <%= form_with model: @like, url:quiz_likes_path(@quiz.id), method: :post, local: true do |f| %>
+    <%= f.hidden_field :like_id, value: 1 %>
+    <%= f.submit 'いいね！'%>
+    <% end %>
+    
+    <%= form_with model: @like, url:quiz_likes_path(@quiz.id), method: :post, local: true do |f| %>
+    <%= f.hidden_field :like_id, value: -1 %>
+    <%= f.submit '合ってる？'%>
+    <% end %>
+    <% if user_signed_in? && Like.exists?(quiz_id: @quiz.id,user_id: current_user.id)%>
+    <a>評価済みです。再評価したい場合は「評価取消」を行ってからにして下さい。</a>
+    <%= link_to "評価取消",quiz_like_path(@quiz.id, @like.id), method: :delete %>
+    <% end %>
+  <% else %>
+   <a>評価する場合はログインをして下さい。</a>
+  <% end %>
+</div>
 <div>
   <h3>コメント</h3>
   <div class="comment-list">
     <% @comments.each do |comment| %>
-    <p><%= comment.comment%><span>(投稿者:<%= comment.user.nickname%>)</span>
-    <% if comment.user.id == current_user.id %>
+    <p><%= comment.comment%><span>(投稿者:<%= comment.user.nickname%>さん)</span>
+    <% if user_signed_in? && comment.user.id == current_user.id %>
       <%= link_to "削除",quiz_comment_path(@quiz.id,comment.id), method: :delete %>
     <% end %>
       <a href="#" >　通報(機能未実装)</a>
@@ -38,8 +59,8 @@
 </div>
 
 <div class="comment-box">
+<% if user_signed_in?%>
   <%= flash[:notice] %>
-  <%= flash.now[:alert] %>
     <%= form_with model: @comment, url:quiz_comments_path(@quiz.id), local: true do |f| %>
       <%= f.text_area :comment, class:"comment-text" %>
       <p class="comment-warn">
@@ -49,4 +70,7 @@
         <span>コメントする<span>
       </button>
     <% end %>
+  <% else %>
+    <p>コメントをする場合はログインをして下さい。</p>
+  <% end %>
   </div>

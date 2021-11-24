@@ -13,5 +13,6 @@ Rails.application.routes.draw do
       get 'seeds'
     end
     resources :comments, only: [:create, :destroy]
+    resources :likes, only: [:create, :edit, :destroy]
   end
 end

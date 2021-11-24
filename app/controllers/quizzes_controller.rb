@@ -25,8 +25,11 @@ class QuizzesController < ApplicationController
   def show
     @quiz = Quiz.find(params[:id])
     @comments = Comment.where(quiz_id: @quiz.id).includes(:user)
+    if user_signed_in?
+      @like = Like.where(quiz_id: @quiz.id, user_id: current_user.id)[0]
+    end
   end
-
+  
   def edit # 参考資料としてのメモ書きです editは「編集」であり、編集するモデルを特定し、編集された内容を受け取り、updateアクションに内容を送信します。「更新」ではありません。
     @quiz = Quiz.find(params[:id])
     if current_user.id == @quiz.user_id # authenticate_user!のみの制限で良いかと考えたが、よくよく考えると別のログインユーザーが編集できてしまうので必要でした。

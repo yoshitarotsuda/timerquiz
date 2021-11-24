@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_23_021121) do
+ActiveRecord::Schema.define(version: 2021_11_23_074006) do
 
   create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.text "comment", null: false
@@ -20,6 +20,16 @@ ActiveRecord::Schema.define(version: 2021_11_23_021121) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["quiz_id"], name: "index_comments_on_quiz_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "likes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "like_id", null: false
+    t.bigint "user_id", null: false
+    t.bigint "quiz_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["quiz_id"], name: "index_likes_on_quiz_id"
+    t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
   create_table "quizzes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -50,5 +60,7 @@ ActiveRecord::Schema.define(version: 2021_11_23_021121) do
 
   add_foreign_key "comments", "quizzes"
   add_foreign_key "comments", "users"
+  add_foreign_key "likes", "quizzes"
+  add_foreign_key "likes", "users"
   add_foreign_key "quizzes", "users"
 end
