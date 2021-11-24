@@ -62,9 +62,14 @@
             <%= link_to quiz_path(quiz.id) do %>
             <b><%= quiz.comments.length %></b>
             <% end %>
-            いいね！: <b>0</b>
-            合ってる？: <b>0</b>
-            取消
+            いいね！: 
+            <%= link_to quiz_path(quiz.id) do %>
+            <b><%=quiz.likes.where(like_id: 1).length %></b>
+            <% end %>
+            合ってる？: 
+            <%= link_to quiz_path(quiz.id) do %>
+            <b><%=quiz.likes.where(like_id: -1).length %></b>
+            <% end %>
             </p>
             <h3><%= quiz.quiz_text %></h3>
             <details>
