@@ -34,7 +34,7 @@ header{
 }
 
 .timer-box{
- 
+ margin-bottom: 10px;
 }
 .timer-set-main{
   display: flex;
@@ -44,11 +44,17 @@ header{
   border: 1px solid black;
   padding: 1px;
   margin:0 2px;
+  background: linear-gradient(to bottom,rgb(194, 199, 195) 0%, rgb(202, 202, 202) 50%,rgb(134, 134, 134) 100%);
+  border-radius: 7px;
 }
 
+.timer-set-main b input{
+  border-radius: 7px;
+}
 .timer-main{
   font-size:35px;
   color:aquamarine;
+  /* color:linear-gradient(to bottom,rgb(194, 199, 195) 0%, rgb(202, 202, 202) 50%,rgb(134, 134, 134) 100%); */
   display: flex;
   justify-content:center;
 }
