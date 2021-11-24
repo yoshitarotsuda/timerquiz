@@ -41,9 +41,10 @@ header{
   justify-content:center;
 }
 .timer-set-main a{
-  border: 1px solid black;
-  padding: 2px;
+  /* border: 1px solid black; */
+  padding: 4px;
   margin:0 2px;
+  text-shadow: 0 1px 0 #eee;
   background: linear-gradient(to bottom,rgb(194, 199, 195) 0%, rgb(202, 202, 202) 50%,rgb(134, 134, 134) 100%);
   border-radius: 7px;
 }
@@ -56,8 +57,9 @@ header{
 }
 .timer-main{
   font-size:35px;
-  color:aquamarine;
-  /* color:linear-gradient(to bottom,rgb(194, 199, 195) 0%, rgb(202, 202, 202) 50%,rgb(134, 134, 134) 100%); */
+  background: linear-gradient(to bottom,rgb(199, 255, 236) 0%, rgb(153, 255, 221) 50%,rgb(21, 241, 230) 100%);
+  -webkit-background-clip: text;
+  color:transparent;
   display: flex;
   justify-content:center;
 }
