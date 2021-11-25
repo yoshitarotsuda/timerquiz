@@ -41,33 +41,46 @@
         <% @quizzes.each do |quiz|%>
           <div class = "quiz quiz-category-<%= quiz.quiz_category_id %> quiz-level-<%= quiz.quiz_level_id %>" id = "quiz-<%= quiz.id%>-<%= quiz.quiz_category_id %>-<%= quiz.quiz_level_id %>">
             <b class ="quiz-clear-button" ><a href ="#" class ="quiz-clear" id ="quiz-clear-<%= quiz.id%>">✖️</a></b>
-            <p>
-            <%= link_to quiz_path(quiz.id) do %>
-            <b>『<%= quiz.quiz_name %>』</b>
-            <% end %>
-            出題者: <b><%= quiz.user.nickname %>さん</b>
-            ジャンル: <b><%= quiz.quiz_category.date %></b>
-            難易度: <b><%= quiz.quiz_level.date %></b></b>
-            コメント数: 
-            <%= link_to quiz_path(quiz.id) do %>
-            <b><%= quiz.comments.length %></b>
-            <% end %>
-            いいね！: 
-            <%= link_to quiz_path(quiz.id) do %>
-            <b><%=quiz.likes.where(like_id: 1).length %></b>
-            <% end %>
-            合ってる？: 
-            <%= link_to quiz_path(quiz.id) do %>
-            <b><%=quiz.likes.where(like_id: -1).length %></b>
-            <% end %>
-            </p>
-            <h3><%= quiz.quiz_text %></h3>
+            <b class ="quiz-title">
+                <%= link_to quiz_path(quiz.id) do %>
+                <b><%= quiz.quiz_name %></b>
+                <% end %>
+            </b>
+            <br>
+            <h4 class="quiz-text"><%= quiz.quiz_text %></h4>
+            <div class="quiz-header-list">
+            <ul >  
+              <li>出題者: <b><%= quiz.user.nickname %>さん</b></li>
+              <li>カテゴリー: <b><%= quiz.quiz_category.date %></b></li>
+              <li>難易度: <b><%= quiz.quiz_level.date %></b></b></li>
+              <li>
+                コメント数: 
+                <%= link_to quiz_path(quiz.id) do %>
+                <b><%= quiz.comments.length %></b>
+                <% end %>
+              </li>
+              <li>
+              いいね！: 
+              <%= link_to quiz_path(quiz.id) do %>
+              <b><%=quiz.likes.where(like_id: 1).length %></b>
+              <% end %>
+              </li>
+              <li>
+              合ってる？: 
+              <%= link_to quiz_path(quiz.id) do %>
+              <b><%=quiz.likes.where(like_id: -1).length %></b>
+              <% end %>
+              </li>
+            </ul>
+            </div>
             <details>
               <summary class="click-answer">答えはコチラをクリック</summary>
-                <li >解答<br><h3><%= quiz.quiz_answer%><h3></li>
-              <% if quiz.quiz_sample.present? %>
-                <li>解説・例文・使用例<br><h4><%= quiz.quiz_sample%></h4></li>
-              <% end %>
+                <div>
+                  <li ><h4 class="quiz-answer-text"><%= quiz.quiz_answer%><h4></li>
+                <% if quiz.quiz_sample.present? %>
+                  <li><b class="quiz-sample-title">解説・例文・使用例</b><h5 class="quiz-sample-text"><%= quiz.quiz_sample%></h5></li>
+                <% end %>
+                </div>
             </details>
           </div>
         <% end %>  

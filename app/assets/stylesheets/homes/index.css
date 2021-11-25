@@ -111,8 +111,41 @@ header{
   padding: 1px;
   border-radius: 7px;
 }
+.quiz-header-list{
+  margin: 0 0 0 auto;
+}
+
+.quiz-header-list ul{
+  display: flex;
+  justify-content: flex-end;
+  font-size:10px;
+  margin:0 5px;
+  border-bottom: solid 1px ;
+}
+.quiz-header-list ul li{
+  margin-right: 5px;
+  
+}
+
+.quiz-title{
+  float:left;
+  text-shadow: 0 1px 0 #eee;
+  background: linear-gradient(to bottom,rgb(199, 255, 236) 0%, rgb(153, 255, 221) 50%,rgb(21, 241, 230) 100%);
+  border-radius: 7px;
+  
+}
+.quiz-text,.quiz-answer-text,.quiz-sample-text{
+  text-align: center ;
+}
+
+
 
 .quiz-clear-button{
   float:right;
   margin:0 3px;
+}
+
+.quiz-sample-title{
+  font-size: 10px;
+  text-decoration: underline;
 }
