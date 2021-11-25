@@ -1,6 +1,6 @@
 class QuizCategory < ActiveHash::Base
   self.data = [
-    { id: 0, date: '---' },
+    { id: 0, date: 'カテゴリー' },
     { id: 1, date: 'IT全般' },
     { id: 2, date: 'Ruby' },
     { id: 3, date: 'Ruby on Rails' },

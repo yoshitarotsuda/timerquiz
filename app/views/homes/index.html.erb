@@ -1,83 +1,86 @@
-
-  <div>
-    <ul  class="header-list">
-        <li><%= link_to 'TOP'%></li>
-        <li><%= link_to '利用ガイド',guide_homes_path%></li>
-        <li><%= link_to '利用規約',terms_homes_path%></li>
-        <li><%= link_to '開発記録',record_homes_path%></li>
-      <% if user_signed_in? %>
-        <li><%= link_to "#{current_user.nickname}さん", edit_user_registration_path, class: "user-nickname" %></li>
-        <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "logout" %></li>
-      <% else %>
-        <li><%= link_to 'ログイン', new_user_session_path, class: "login" %></li>
-        <li><%= link_to '新規登録', new_user_registration_path, class: "sign-up" %></li>
-      <% end %>
-      
-    </ul>
-  </div>
-
 <div class="home-main">
- 
-  <form class="timer-set-main">
-    <b>
-      <input type ="number" id="set-hour" value="0" max="24"min="0">時間
-      <input type ="number" id="set-min" value="0" max="59" min="0">分
-      <input type ="number" id="set-sec" value="0" max="59" min="0">秒
-    </b>
-    <b id = "timer-button"><a href ="#" id ="timer-start" >開始</a></b>
-    <b id = "3min-button"><a href ="#" id ="3-min" >3分</a></b>
-    <b id = "5min-button"><a href ="#" id ="5-min" >5分</a></b>
-    <b id = "reset-button"><a id ="timer-reset" >リセット</a></b>
-  </form>
-  <div class="timer-main">
-    <h1 id="timer-body"><span id="hour">00</span>：<span id="min">00</span>：<span id="sec">00</span><h1>
+  <div class="timer-box">
+    <div class="timer-main">
+      <h1 id="timer-body"><span id="hour">00</span>：<span id="min">00</span>：<span id="sec">00</span><h1>
+    </div>
+    <div>
+      <form class="timer-set-main">
+        <b class ="timer-set-left">
+          <input type ="number" id="set-hour" value="0" max="24"min="0">時間
+          <input type ="number" id="set-min" value="0" max="59" min="0">分
+          <input type ="number" id="set-sec" value="0" max="59" min="0">秒
+        </b>
+        <b id = "timer-button"><a href ="#" id ="timer-start" >開始</a></b>
+        <b id = "3min-button"><a href ="#" id ="3-min" >3分</a></b>
+        <b id = "5min-button"><a href ="#" id ="5-min" >5分</a></b>
+        <b id = "reset-button"><a id ="timer-reset" >リセット</a></b>
+      </form>
+    </div>
   </div>
   <div id="quiz-main">
-    <%= link_to 'クイズ作成', new_quiz_path %>
-    <%= link_to 'クイズ一覧', quizzes_path %>
-    <br>
-    <%= collection_select(:quiz,:category_id, QuizCategory.all, :id, :date, {}, {class:"hoge", id:"quiz-search-category"}) %>
-    <%= collection_select(:quiz,:level_id, QuizLevel.all, :id, :date, {}, {class:"hoge", id:"quiz-search-level"}) %>
-    
-    <a href= "#" id ="quiz-search" >クイズ検索</a>
-    <a href= "#" id ="reset-search" >元に戻す</a>
-    Answer <input type ="number" id="answer-auto-time" value="0" max="300" min="0">秒
-    Next <input type ="number" id="quiz-auto-time" value="0" max="300" min="0">秒
-    <a href = "#" id ="quiz-auto" >クイズ自動</a>
-
-    <%# <span class="function">出題の30秒後に答えが30秒表示され、次の問題が表示されます</span> %>
-
+    <div class="quiz-edit-index">
+      <b><%= link_to 'クイズ作成', new_quiz_path %></b>
+      <b><%= link_to 'クイズ一覧', quizzes_path %></b>
+      <b><a href= "#" id ="reset-search" >元に戻す</a></b>
+    </div>
+    <div class="quiz-search-auto">
+      <ul>
+      <li>
+        <b><%= collection_select(:quiz,:category_id, QuizCategory.all, :id, :date, {}, {class:"hoge", id:"quiz-search-category"}) %>
+        <%= collection_select(:quiz,:level_id, QuizLevel.all, :id, :date, {}, {class:"hoge", id:"quiz-search-level"}) %>
+        <a href= "#" id ="quiz-search" >クイズ検索</a></b>  
+      </li>
+      <li>
+        <b>解答 <input type ="number" id="answer-auto-time" value="0" max="300" min="0">秒</b>
+        <b>次問 <input type ="number" id="quiz-auto-time" value="0" max="300" min="0">秒</b>
+        <b><a href = "#" id ="quiz-auto" >クイズ自動</a></b>
+      </li>
+      </ul>
+    </div>
     <% if @quizzes.present? %>
         <% @quizzes.each do |quiz|%>
           <div class = "quiz quiz-category-<%= quiz.quiz_category_id %> quiz-level-<%= quiz.quiz_level_id %>" id = "quiz-<%= quiz.id%>-<%= quiz.quiz_category_id %>-<%= quiz.quiz_level_id %>">
             <b class ="quiz-clear-button" ><a href ="#" class ="quiz-clear" id ="quiz-clear-<%= quiz.id%>">✖️</a></b>
-            <p>
-            <%= link_to quiz_path(quiz.id) do %>
-            <b>『<%= quiz.quiz_name %>』</b>
-            <% end %>
-            出題者: <b><%= quiz.user.nickname %>さん</b>
-            ジャンル: <b><%= quiz.quiz_category.date %></b>
-            難易度: <b><%= quiz.quiz_level.date %></b></b>
-            コメント数: 
-            <%= link_to quiz_path(quiz.id) do %>
-            <b><%= quiz.comments.length %></b>
-            <% end %>
-            いいね！: 
-            <%= link_to quiz_path(quiz.id) do %>
-            <b><%=quiz.likes.where(like_id: 1).length %></b>
-            <% end %>
-            合ってる？: 
-            <%= link_to quiz_path(quiz.id) do %>
-            <b><%=quiz.likes.where(like_id: -1).length %></b>
-            <% end %>
-            </p>
-            <h3><%= quiz.quiz_text %></h3>
+            <b class ="quiz-title">
+                <%= link_to quiz_path(quiz.id) do %>
+                <b><%= quiz.quiz_name %></b>
+                <% end %>
+            </b>
+            <br>
+            <h4 class="quiz-text"><%= quiz.quiz_text %></h4>
+            <div class="quiz-header-list">
+            <ul >  
+              <li>出題者: <b><%= quiz.user.nickname %>さん</b></li>
+              <li>カテゴリー: <b><%= quiz.quiz_category.date %></b></li>
+              <li>難易度: <b><%= quiz.quiz_level.date %></b></b></li>
+              <li>
+                コメント数: 
+                <%= link_to quiz_path(quiz.id) do %>
+                <b><%= quiz.comments.length %></b>
+                <% end %>
+              </li>
+              <li>
+              いいね！: 
+              <%= link_to quiz_path(quiz.id) do %>
+              <b><%=quiz.likes.where(like_id: 1).length %></b>
+              <% end %>
+              </li>
+              <li>
+              合ってる？: 
+              <%= link_to quiz_path(quiz.id) do %>
+              <b><%=quiz.likes.where(like_id: -1).length %></b>
+              <% end %>
+              </li>
+            </ul>
+            </div>
             <details>
               <summary class="click-answer">答えはコチラをクリック</summary>
-                <li >解答<br><h3><%= quiz.quiz_answer%><h3></li>
-              <% if quiz.quiz_sample.present? %>
-                <li>解説・例文・使用例<br><h4><%= quiz.quiz_sample%></h4></li>
-              <% end %>
+                <div>
+                  <li ><h4 class="quiz-answer-text"><%= quiz.quiz_answer%><h4></li>
+                <% if quiz.quiz_sample.present? %>
+                  <li><b class="quiz-sample-title">解説・例文・使用例</b><h5 class="quiz-sample-text"><%= quiz.quiz_sample%></h5></li>
+                <% end %>
+                </div>
             </details>
           </div>
         <% end %>  
